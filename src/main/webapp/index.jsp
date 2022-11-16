@@ -2,12 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>JSP - Student Management Program</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="student-servlet">Hello Servlet</a>
+<h2><%= "Student Management Program" %>
+</h2>
+<a href="student-servlet">Click here to see the list of student</a><br>
+<a href="insert.jsp">Click here to insert a new student to database</a><br>
+<a href="student-delete">Click here to delete a student from database</a><br>
 </body>
 </html>
