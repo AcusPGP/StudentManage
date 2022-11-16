@@ -25,16 +25,13 @@ public class SinhVienDAO {
 
     public static final String COLUMN_NGAYSINH = "NGAYSINH";
 
-    public static final String COLUMN_NGAYTAO = "NGAYTAO";
-
-    public static final String COLUMN_ADDRESS = "diachi";
-
+    public static final String COLUMN_ADDRESS = "DIACHI";
 
     private List<SinhVienBE> list() {
         List<SinhVienBE> list = new ArrayList<>();
         String sql = "select ";
         sql += COLUMN_MASV + "," + COLUMN_HOTEN;
-        sql += "," + COLUMN_MALOP + "," + COLUMN_GIOITINH + "," + COLUMN_NGAYSINH + "," + COLUMN_NGAYTAO + "," + COLUMN_ADDRESS;
+        sql += "," + COLUMN_MALOP + "," + COLUMN_GIOITINH + "," + COLUMN_NGAYSINH + ","  + COLUMN_ADDRESS;
         sql += " from " + TABLE_NAME;
         Connection connection = null;
         try {
@@ -48,7 +45,6 @@ public class SinhVienDAO {
                         .maLop(resultSet.getString(COLUMN_HOTEN))
                         .gioiTinh(resultSet.getString(COLUMN_GIOITINH))
                         .ngaySinh(resultSet.getDate(COLUMN_NGAYSINH).toString())
-                        .ngayTao(resultSet.getDate(COLUMN_NGAYTAO).toString())
                         .diachi(resultSet.getString(COLUMN_ADDRESS))
                         .build();
                 list.add(sv);
@@ -77,7 +73,7 @@ public class SinhVienDAO {
         Connection con = null;
         String sql = "insert into " + TABLE_NAME + "(";
         sql += COLUMN_MASV + ", " + COLUMN_HOTEN + ", " + COLUMN_MALOP  + ", ";
-        sql += COLUMN_GIOITINH + ", " + COLUMN_NGAYSINH + ", " + COLUMN_NGAYTAO;
+        sql += COLUMN_GIOITINH + ", " + COLUMN_NGAYSINH;
         sql += ") values(";
         sql += sinhvien.getMasv() + "," + sinhvien.getHoten() + "," + sinhvien.getMaLop() + ",";
         sql += sinhvien.getGioiTinh() + "," + sinhvien.getNgaySinh() + "," + sinhvien.getNgayTao();
