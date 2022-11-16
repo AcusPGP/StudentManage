@@ -5,7 +5,11 @@ import vn.com.student.controller.pojo.SinhVienBE;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SinhVienDAO {
 
@@ -22,6 +26,51 @@ public class SinhVienDAO {
     public static final String COLUMN_NGAYSINH = "NGAYSINH";
 
     public static final String COLUMN_NGAYTAO = "NGAYTAO";
+
+    public static final String COLUMN_ADDRESS = "diachi";
+
+
+    private List<SinhVienBE> list() {
+        List<SinhVienBE> list = new ArrayList<>();
+        String sql = "select ";
+        sql += COLUMN_MASV + "," + COLUMN_HOTEN;
+        sql += "," + COLUMN_MALOP + "," + COLUMN_GIOITINH + "," + COLUMN_NGAYSINH + "," + COLUMN_NGAYTAO + "," + COLUMN_ADDRESS;
+        sql += " from " + TABLE_NAME;
+        Connection connection = null;
+        try {
+            connection = StudentApp.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                SinhVienBE sv = SinhVienBE.builder()
+                        .masv(resultSet.getString(COLUMN_MASV))
+                        .hoten(resultSet.getString(COLUMN_HOTEN))
+                        .maLop(resultSet.getString(COLUMN_HOTEN))
+                        .gioiTinh(resultSet.getString(COLUMN_GIOITINH))
+                        .ngaySinh(resultSet.getDate(COLUMN_NGAYSINH).toString())
+                        .ngayTao(resultSet.getDate(COLUMN_NGAYTAO).toString())
+                        .diachi(resultSet.getString(COLUMN_ADDRESS))
+                        .build();
+                list.add(sv);
+            }
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return list;
+    }
+
+    public static final List<SinhVienBE> getListSinhVien() {
+        return new SinhVienDAO().list();
+    }
 
     private int doInsert(SinhVienBE sinhvien) {
 

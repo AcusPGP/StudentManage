@@ -11,15 +11,17 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SinhVienBE {
 
-    public String masv;
+    private String masv;
 
-    public String hoten;
+    private String hoten;
 
-    public String maLop;
+    private String maLop;
 
-    public String gioiTinh;
+    private String gioiTinh;
 
-    public String ngaySinh;
+    private String ngaySinh;
 
-    public String ngayTao;
+    private String ngayTao;
+
+    private String diachi;
 }
