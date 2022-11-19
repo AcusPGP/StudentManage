@@ -60,7 +60,6 @@ public class SinhVienDAO {
                 throw new RuntimeException(e);
             }
         }
-
         return list;
     }
 
@@ -68,22 +67,29 @@ public class SinhVienDAO {
         return new SinhVienDAO().list();
     }
 
+    public static final String toSqlValue(Object obj) {
+        if(obj instanceof String) {
+            return "'" + obj + "'";
+        } else if(obj instanceof Integer)
+            return obj + "";
+        return "'" + obj + "'";
+    }
+
     private int doInsert(SinhVienBE sinhvien) {
 
         Connection con = null;
         String sql = "insert into " + TABLE_NAME + "(";
         sql += COLUMN_MASV + ", " + COLUMN_HOTEN + ", " + COLUMN_MALOP  + ", ";
-        sql += COLUMN_GIOITINH + ", " + COLUMN_NGAYSINH;
+        sql += COLUMN_GIOITINH + ", " + COLUMN_NGAYSINH + ", " + COLUMN_ADDRESS;
         sql += ") values(";
-        sql += sinhvien.getMasv() + "," + sinhvien.getHoten() + "," + sinhvien.getMaLop() + ",";
-        sql += sinhvien.getGioiTinh() + "," + sinhvien.getNgaySinh() + "," + sinhvien.getNgayTao();
+        sql += toSqlValue(sinhvien.getMasv()) + "," + toSqlValue(sinhvien.getHoten()) + "," + toSqlValue(sinhvien.getMaLop()) + ",";
+        sql += toSqlValue(sinhvien.getGioiTinh()) + "," + toSqlValue(sinhvien.getNgaySinh()) + "," + toSqlValue(sinhvien.getDiachi());
         sql += ")";
 
         try {
             con = StudentApp.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
-            int result = statement.executeUpdate();
-            return result;
+            return statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -95,8 +101,50 @@ public class SinhVienDAO {
         }
     }
 
+    private int doDelete(SinhVienBE sinhvien) {
+
+        Connection connection = null;
+        String sql = "DELETE FROM " + TABLE_NAME + " WHERE " + COLUMN_MASV + "=" + toSqlValue(sinhvien.getMasv()) + ";";
+
+        try {
+            connection = StudentApp.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            return statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+    public void doDelete(String sCondition) {
+        Connection connection = null;
+        String sql = "DELETE FROM " + TABLE_NAME + sCondition;
+        try {
+
+        } catch(Exception e) {
+
+        }
+
+    }
+
+
+    public static final int delete(String sCondtion) {
+        return 0;
+    }
+
     public static final int insert(SinhVienBE sinhvien) {
         SinhVienDAO dao = new SinhVienDAO() ;
         return dao.doInsert(sinhvien);
+    }
+
+    public static final int delete(SinhVienBE sinhvien) {
+        SinhVienDAO dao = new SinhVienDAO();
+        return dao.doDelete(sinhvien);
     }
 }

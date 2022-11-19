@@ -1,0 +1,49 @@
+body {
+    margin: 150px;
+    padding: 0;
+    min-height: 100vh;
+    background: #0b1522;
+}
+
+.header {
+    color: whitesmoke;
+    font-family: Arial, serif;
+    align-content: center;
+    align-items: center;
+}
+
+.button_group {
+    align-items: center;
+    align-content: center;
+}
+.button {
+    width: 200px;
+    height: 50px;
+    background-color: #f20044;
+    border-radius: 25px;
+    border-color: whitesmoke;
+    margin: 25px;
+    font-family: Arial, serif;
+    font-size: 18px;
+    color: whitesmoke;
+}
+
+.button:hover {
+    background-color: lightblue;
+    color: black;
+}
+
+.link_style {
+    padding: 15px 30px;
+    background-color: #f20044;
+    border-radius: 25px;
+    font-family: Arial, serif;
+    font-size: 18px;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.link_style:hover {
+    background-color: lightblue;
+    color: black;
+}

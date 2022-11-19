@@ -1,0 +1,27 @@
+body{
+    margin: 150px;
+    padding: 0;
+    background: lightblue;
+}
+
+.header{
+    color: black;
+    font-family: Arial, serif;
+    align-content: center;
+    align-items: center;
+}
+
+.link_style {
+    padding: 15px 30px;
+    background-color: #f20044;
+    border-radius: 25px;
+    font-family: Arial, serif;
+    font-size: 18px;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.link_style:hover {
+    background-color: #0b1522;
+    color: whitesmoke;
+}
