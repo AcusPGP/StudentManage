@@ -17,7 +17,7 @@ public class StudentDelete extends HttpServlet {
         response.setContentType("text/html");
         // Get the print writer
         PrintWriter out = response.getWriter();
-        if (request.getParameter("confirm") != null) {
+        if (request.getParameter("delete") != null) {
             delete(request);
         } else {
             System.out.println("Failed");

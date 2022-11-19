@@ -42,7 +42,7 @@ public class SinhVienDAO {
                 SinhVienBE sv = SinhVienBE.builder()
                         .masv(resultSet.getString(COLUMN_MASV))
                         .hoten(resultSet.getString(COLUMN_HOTEN))
-                        .maLop(resultSet.getString(COLUMN_HOTEN))
+                        .maLop(resultSet.getString(COLUMN_MALOP))
                         .gioiTinh(resultSet.getString(COLUMN_GIOITINH))
                         .ngaySinh(resultSet.getDate(COLUMN_NGAYSINH).toString())
                         .diachi(resultSet.getString(COLUMN_ADDRESS))
@@ -105,7 +105,6 @@ public class SinhVienDAO {
 
         Connection connection = null;
         String sql = "DELETE FROM " + TABLE_NAME + " WHERE " + COLUMN_MASV + "=" + toSqlValue(sinhvien.getMasv()) + ";";
-
         try {
             connection = StudentApp.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);

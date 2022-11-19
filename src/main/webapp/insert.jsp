@@ -2,33 +2,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Insert</title>
+    <title>Insert the students</title>
+    <link rel="stylesheet" type="text/css" href="css/function.css">
 </head>
 <body>
-    <h2>Insert a new student to database</h2>
-    <form action="student-insert">
-        <p style="font-style: oblique">Enter the student information</p>
-        ID <input name="id" type="text">
-        <br>
-        <br>
-        NAME <input name="name" type="text">
-        <br>
-        <br>
-        CLASS ID <input name="class_id" type="text">
-        <br>
-        <br>
-        GENDER <input name="gender" type="text">
-        <br>
-        <br>
-        BIRTH <input name="birth" type="text">
-        <br>
-        <br>
-        ADDRESS <input name="address" type="text">
-        <br>
-        <br>
-        <input type="submit" name="event" value="confirm">
+<div>
+    <a href="index.jsp" class="link_style">Back</a><br>
+    <p style="background-color: transparent; height: 25px"></p>
+</div>
+<div class="header" align="center">
+    <h3>Insert a student to database</h3>
+</div>
+<div align="center">
+    <form action="student-insert" style="font-family: Arial, serif ; font-size: 18px">
+        ID <input name="id" type="text" placeholder="Input the ID"/>
+        <p style="background-color: transparent; height: 15px"></p>
+        NAME <input name="name" type="text" placeholder="Input the NAME"/>
+        <p style="background-color: transparent; height: 15px"></p>
+        CLASS ID <input name="class_id" type="text" placeholder="Input the CLASS ID"/>
+        <p style="background-color: transparent; height: 15px"></p>
+        GENDER <input name="gender" type="text" placeholder="Input the GENDER"/>
+        <p style="background-color: transparent; height: 15px"></p>
+        BIRTH <input name="birth" type="text" placeholder="Input the BIRTH"/>
+        <p style="background-color: transparent; height: 15px"></p>
+        ADDRESS <input name="address" type="text" placeholder="Input the ADDRESS"/>
+        <p style="background-color: transparent; height: 15px"></p>
+        <input type="submit" name="insert" value="Insert">
     </form>
-    <br><button type="submit" id="insert_button">Insert</button>
-    <jsp:include page="student-insert"></jsp:include>
+</div>
+<jsp:include page="student-insert"/>
 </body>
 </html>

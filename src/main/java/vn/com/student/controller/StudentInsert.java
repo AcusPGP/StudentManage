@@ -19,9 +19,9 @@ public class StudentInsert extends HttpServlet {
         response.setContentType("text/html");
         // Get the print writer
         PrintWriter out = response.getWriter();
-        out.println("<h3>You are in insert.jsp!</h3>");
         if (request.getParameter("event") != null) {
             onInsertButton(request);
+            out.println("<h3>You are in insert.jsp!</h3>");
         } else {
             System.out.println("Failed!");
         }
@@ -42,7 +42,7 @@ public class StudentInsert extends HttpServlet {
                 .gioiTinh(gender)
                 .diachi(address)
                 .build();
-        int sinhVienDAO = SinhVienDAO.insert(newSinhVien);
-        System.out.println("Number: " + sinhVienDAO);
+        int result = SinhVienDAO.insert(newSinhVien);
+        System.out.println("Number: " + result);
     }
 }

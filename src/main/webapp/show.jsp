@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Show the students</title>
-    <link rel="stylesheet" type="text/css" href="css/show.css">
+    <link rel="stylesheet" type="text/css" href="css/function.css">
 </head>
 <body>
 <div>
